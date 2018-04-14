@@ -73,3 +73,28 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Starter Content
+/Content/StarterContent/Architecture
+/Content/StarterContent/Audio
+/Content/StarterContent/Blueprints
+/Content/StarterContent/HDRI
+/Content/StarterContent/Maps
+/Content/StarterContent/Materials
+/Content/StarterContent/Particles
+/Content/StarterContent/Props
+/Content/StarterContent/Shapes
+/Content/StarterContent/Textures/T_Gradinet_01.uasset
+/Content/StarterContent/Textures/T_Ground_Moss_*.uasset
+/Content/StarterContent/Textures/T_B*.uasset
+/Content/StarterContent/Textures/T_C*.uasset
+/Content/StarterContent/Textures/T_D*.uasset
+/Content/StarterContent/Textures/T_E*.uasset
+/Content/StarterContent/Textures/T_F*.uasset
+/Content/StarterContent/Textures/T_L*.uasset
+/Content/StarterContent/Textures/T_M*.uasset
+/Content/StarterContent/Textures/T_P*.uasset
+/Content/StarterContent/Textures/T_R*.uasset
+/Content/StarterContent/Textures/T_S*.uasset
+/Content/StarterContent/Textures/T_T*.uasset
+/Content/StarterContent/Textures/T_W*.uasset
