@@ -8,11 +8,9 @@
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	auto ControlledTank = GetControlledTank();
-	if (ControlledTank) {
-		return;
-	}
+	if (ControlledTank) { return; }
 	else {
 		UE_LOG(LogTemp, Error, TEXT("AIController not possessing tank."));
 	}
