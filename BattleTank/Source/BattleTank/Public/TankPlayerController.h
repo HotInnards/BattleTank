@@ -15,17 +15,15 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
+private:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	ATank * GetControlledTank() const;
-	
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-private:
 	UPROPERTY(EditAnywhere)
 	float CrosshairXLocation = 0.5f;
 

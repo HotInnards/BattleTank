@@ -2,7 +2,6 @@
 
 #include "Tank.h"
 
-
 // Sets default values
 ATank::ATank()
 {
@@ -30,4 +29,10 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ATank::AimAt(FVector HitLocation)
+{
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s is aiming at %s"), *TankName, *HitLocation.ToString())
 }
