@@ -6,9 +6,6 @@
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
-// Forward declarations
-class ATank;
-
 /**
  * 
  */
@@ -23,9 +20,5 @@ private:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	ATank * GetControlledTank() const;
-
-	ATank * GetPlayerTank() const;
 
 };
