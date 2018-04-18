@@ -3,6 +3,7 @@
 
 #include "TankAIController.h"
 #include "Tank.h"
+#include "Engine/World.h"
 
 // Called when the game starts or when spawned
 void ATankAIController::BeginPlay()
@@ -21,6 +22,7 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if (PlayerTank) {
 		// TODO Move towards the player
+		MoveToActor(PlayerTank, AcceptanceRadius); // TODO check radius units (cm?)
 
 		// Aim towards the player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
