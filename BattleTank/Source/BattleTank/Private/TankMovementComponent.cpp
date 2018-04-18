@@ -1,18 +1,28 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankMovementComponent.h"
+#include "TankTrack.h"
 
 // Sets default values
-UTankMovementComponent::UTankMovementComponent()
+void UTankMovementComponent::Initialise(UTankTrack * LeftTrack, UTankTrack * RightTrack)
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = false;
-
-	// ...
+	if (!LeftTrack || !RightTrack) { return; }
+	this->LeftTrack = LeftTrack;
+	this->RightTrack = RightTrack;
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Intend move forward throw: %f"), Throw)
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(Throw);
+
+	// TODO prevent double speed from inputs (triggers)
+}
+
+void UTankMovementComponent::IntendTurnRight(float Throw)
+{
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
+
+	// TODO prevent double speed from inputs (triggers)
 }
