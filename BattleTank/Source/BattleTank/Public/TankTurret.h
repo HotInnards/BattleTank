@@ -15,16 +15,11 @@ class BATTLETANK_API UTankTurret : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
+	// -1 is max negative movement, +1 is max positive movement
 	void Rotate(float RelativeSpeed);
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MinRotation = 0;
-
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxRotation = 360;
-
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 5;
+	float MaxDegreesPerSecond = 25;
 	
 };
