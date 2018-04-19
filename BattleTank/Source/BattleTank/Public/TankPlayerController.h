@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Buffster Studios Ltd.
 
 #pragma once
 
@@ -10,7 +10,7 @@
 class ATank;
 
 /**
- * 
+ * Responsible for player control
  */
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
@@ -28,13 +28,13 @@ private:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float CrosshairXLocation = 0.5f;
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float CrosshairYLocation = 0.33333f;
 
-	UPROPERTY(EditDefaultsOnly, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float LineTraceRange = 1000000.f;
 
 	// Start the tank moving the barrel so that a shot would hit where the crosshair intersects the world

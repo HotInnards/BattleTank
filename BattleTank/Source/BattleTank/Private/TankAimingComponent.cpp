@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Buffster Studios Ltd.
 
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
@@ -17,18 +17,13 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* Barrel)
+// Sets default values
+void UTankAimingComponent::Initialise(UTankBarrel * Barrel, UTankTurret * Turret)
 {
-	if (!Barrel) { return; }
+	if (!Barrel || !Turret) { return; }
 	this->Barrel = Barrel;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* Turret)
-{
-	if (!Turret) { return; }
 	this->Turret = Turret;
 }
-
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
@@ -58,6 +53,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::AimToward(FVector AimDirection)
 {
+	if (!Barrel || !Turret) { return; }
 	// Work out difference between current barrel elevation / turret rotation and AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();

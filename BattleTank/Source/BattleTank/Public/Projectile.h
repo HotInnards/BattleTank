@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Buffster Studios Ltd.
 
 #pragma once
 
@@ -29,6 +29,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UProjectileMovementComponent * ProjectileMovement = nullptr;
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
 
 };

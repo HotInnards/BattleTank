@@ -1,8 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Buffster Studios Ltd.
 
 #include "TankTrack.h"
 #include "Components/PrimitiveComponent.h"
-//#include "Engine/World.h"
 
 void UTankTrack::SetThrottle(float Throttle)
 {
