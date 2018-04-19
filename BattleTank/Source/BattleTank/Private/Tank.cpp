@@ -1,10 +1,6 @@
 // Copyright Buffster Studios Ltd.
 
 #include "Tank.h"
-#include "GameFramework/Actor.h"
-#include "Engine/World.h"
-#include "TankBarrel.h"
-#include "Projectile.h"
 
 // Sets default values
 ATank::ATank()
@@ -17,22 +13,4 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay(); // Needed for blueprint BeingPlay to run!
 
-}
-
-void ATank::Fire()
-{
-	if (!ensure(Barrel)) { return; }
-	auto Time = GetWorld()->GetTimeSeconds();
-	bool IsReloaded = (Time - LastFireTime) > ReloadTimeInSeconds;
-
-	if (IsReloaded) { 
-		// Spawn a projectile at the socket location on the barrel
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketTransform(FName("Projectile"))
-			);
-
-		Projectile->LaunchProjectile(LaunchSpeed);
-		LastFireTime = Time;
-	}
 }
