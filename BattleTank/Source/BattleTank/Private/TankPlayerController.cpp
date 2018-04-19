@@ -14,14 +14,14 @@ void ATankPlayerController::BeginPlay()
 	ATank* ControlledTank = GetControlledTank();
 	UTankAimingComponent* AimingComponent = nullptr;
 	
-	if (ControlledTank) {
+	if (!ensure(ControlledTank)) {
 		AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	}
 	else {
 		UE_LOG(LogTemp, Error, TEXT("PlayerController not possessing tank."));
 	}
 
-	if (AimingComponent) {
+	if (!ensure(AimingComponent)) {
 		FoundAimingComponent(AimingComponent);
 	} 
 	else {
@@ -45,7 +45,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 void ATankPlayerController::AimTowardsCrossHair()
 {
-	if (!GetControlledTank()) { return; }
+	if (!ensure(GetControlledTank())) { return; }
 
 	FVector HitLocation; // Out parameter
 
@@ -100,5 +100,3 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 
 	return false;
 }
-
-
