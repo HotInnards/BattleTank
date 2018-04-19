@@ -16,6 +16,10 @@ UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+
+protected:
+	UFUNCTION(BlueprintCAllable, Category = "Setup")
+	ATank * GetControlledTank() const;
 	
 private:
 	// Called when the game starts or when spawned
@@ -23,8 +27,6 @@ private:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	ATank * GetControlledTank() const;
 
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	float CrosshairXLocation = 0.5f;
