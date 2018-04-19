@@ -11,6 +11,8 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (!GetPawn()) { return; } // eg. if not possessing
+
 	TankAimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(TankAimingComponent)){ return; } 
 	FoundAimingComponent(TankAimingComponent);
