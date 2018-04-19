@@ -10,7 +10,7 @@
 UENUM()
 enum class EFiringState: uint8
 {
-	Reoloading,
+	Reloading,
 	Aiming,
 	Locked
 };
@@ -40,13 +40,17 @@ protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-	EFiringState FiringState = EFiringState::Locked;
+	EFiringState FiringState = EFiringState::Reloading;
 
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
 	void AimToward(FVector AimDirection);
+
+	virtual void BeginPlay() override;
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
 	UTankBarrel* Barrel = nullptr;
 
