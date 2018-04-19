@@ -17,16 +17,10 @@ void ATankPlayerController::BeginPlay()
 	if (ensure(ControlledTank)) {
 		AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	}
-	else {
-		UE_LOG(LogTemp, Error, TEXT("PlayerController not possessing tank."));
-	}
 
 	if (ensure(AimingComponent)) {
 		FoundAimingComponent(AimingComponent);
 	} 
-	else {
-		UE_LOG(LogTemp, Error, TEXT("Player controller can't find aiming component at Begin Play"))
-	}
 }
 
 // Called every frame
