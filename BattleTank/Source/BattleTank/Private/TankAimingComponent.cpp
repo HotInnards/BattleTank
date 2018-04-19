@@ -45,7 +45,8 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
-	if (bHaveAimSolution) {
+	if (bHaveAimSolution)
+	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		AimToward(AimDirection);
 	}
@@ -66,7 +67,7 @@ void UTankAimingComponent::AimToward(FVector AimDirection)
 
 void UTankAimingComponent::Fire()
 {
-	if (!ensure(Barrel)) { return; }
+	if (!ensure(Barrel && ProjectileBlueprint)) { return; }
 	auto Time = GetWorld()->GetTimeSeconds();
 	bool IsReloaded = (Time - LastFireTime) > ReloadTimeInSeconds;
 

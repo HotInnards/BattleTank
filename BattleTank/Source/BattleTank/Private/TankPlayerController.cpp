@@ -29,7 +29,8 @@ void ATankPlayerController::AimTowardsCrossHair()
 	if (!ensure(TankAimingComponent)) { return; }
 	FVector HitLocation; // Out parameter
 
-	if (GetSightRayHitLocation(HitLocation)) { // Has "side-effect", is going to line trace
+	if (GetSightRayHitLocation(HitLocation)) // Has "side-effect", is going to line trace
+	{ 
 		TankAimingComponent->AimAt(HitLocation);
 	}
 
@@ -45,7 +46,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 
 	// "De-project" the screen position of the crosshair to a world direction
 	FVector LookDirection;
-	if (GetLookDirection(ScreenLocation, LookDirection)) {
+	if (GetLookDirection(ScreenLocation, LookDirection))
+	{
 		// Line-trace along that look direction and see what we hit (up to max range)
 		return GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
@@ -72,7 +74,8 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 		ECollisionChannel::ECC_Visibility
 	);
 
-	if (LineTraceSuccess) {
+	if (LineTraceSuccess)
+	{
 		HitLocation = HitResult.Location;
 		return true;
 	}

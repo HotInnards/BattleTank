@@ -46,11 +46,11 @@ private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
+	void AimToward(FVector AimDirection);
+
 	UTankBarrel* Barrel = nullptr;
 
 	UTankTurret* Turret = nullptr;
-
-	void AimToward(FVector AimDirection);
 
 	double LastFireTime = 0;
 
