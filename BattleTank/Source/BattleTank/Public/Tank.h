@@ -26,10 +26,10 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Setup")
-	UTankAimingComponent * TankAimingComponent = nullptr;
+	UTankAimingComponent* TankAimingComponent = nullptr;
 	
 	UPROPERTY(BlueprintReadOnly, Category = "Setup")
-	UTankMovementComponent * TankMovementComponent = nullptr;
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
