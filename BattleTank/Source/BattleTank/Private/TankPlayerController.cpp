@@ -14,14 +14,14 @@ void ATankPlayerController::BeginPlay()
 	ATank* ControlledTank = GetControlledTank();
 	UTankAimingComponent* AimingComponent = nullptr;
 	
-	if (!ensure(ControlledTank)) {
+	if (ensure(ControlledTank)) {
 		AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	}
 	else {
 		UE_LOG(LogTemp, Error, TEXT("PlayerController not possessing tank."));
 	}
 
-	if (!ensure(AimingComponent)) {
+	if (ensure(AimingComponent)) {
 		FoundAimingComponent(AimingComponent);
 	} 
 	else {
@@ -46,7 +46,6 @@ ATank* ATankPlayerController::GetControlledTank() const
 void ATankPlayerController::AimTowardsCrossHair()
 {
 	if (!ensure(GetControlledTank())) { return; }
-
 	FVector HitLocation; // Out parameter
 
 	if (GetSightRayHitLocation(HitLocation)) { // Has "side-effect", is going to line trace
