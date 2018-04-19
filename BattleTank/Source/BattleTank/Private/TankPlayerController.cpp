@@ -5,16 +5,27 @@
 #include "GameFramework/PlayerController.h"
 #include "Components/PrimitiveComponent.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	auto ControlledTank = GetControlledTank();
-	if (ControlledTank) { return; }
+	ATank* ControlledTank = GetControlledTank();
+	UTankAimingComponent* AimingComponent = nullptr;
+	
+	if (ControlledTank) {
+		AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
+	}
 	else {
 		UE_LOG(LogTemp, Error, TEXT("PlayerController not possessing tank."));
+	}
+
+	if (AimingComponent) {
+		FoundAimingComponent(AimingComponent);
+	} 
+	else {
+		UE_LOG(LogTemp, Error, TEXT("Player controller can't find aiming component at Begin Play"))
 	}
 }
 

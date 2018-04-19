@@ -8,6 +8,7 @@
 
 // Forward declarations
 class ATank;
+class UTankAimingComponent;
 
 /**
  * Responsible for player control
@@ -18,8 +19,11 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 protected:
-	UFUNCTION(BlueprintCAllable, Category = "Setup")
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	ATank * GetControlledTank() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimingComponentReference);
 	
 private:
 	// Called when the game starts or when spawned
