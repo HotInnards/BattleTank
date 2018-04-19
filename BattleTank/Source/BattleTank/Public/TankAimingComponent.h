@@ -6,19 +6,19 @@
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
+// Forward declarations
+class UTankBarrel;
+class UTankTurret;
+class AProjectile;
+
 // Enum for aiming state
 UENUM()
-enum class EFiringState: uint8
+enum class EFiringState : uint8
 {
 	Reloading,
 	Aiming,
 	Locked
 };
-
-// Forward declarations
-class UTankBarrel;
-class UTankTurret;
-class AProjectile;
 
 // Hold barrel properties and required methods
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
@@ -43,20 +43,24 @@ protected:
 	EFiringState FiringState = EFiringState::Reloading;
 
 private:
+	virtual void BeginPlay() override;
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
 	void AimToward(FVector AimDirection);
 
-	virtual void BeginPlay() override;
-
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	bool IsBarrelMoving();
 
 	UTankBarrel* Barrel = nullptr;
 
 	UTankTurret* Turret = nullptr;
 
 	double LastFireTime = 0;
+
+	FVector AimDirection;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
