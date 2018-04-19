@@ -7,7 +7,6 @@
 #include "Tank.generated.h"
 
 // Forward declarations
-class UTankAimingComponent;
 class UTankBarrel;
 class UTankTurret;
 class AProjectile;
@@ -18,14 +17,8 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
-	void AimAt(FVector HitLocation);
-
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
-
-protected:
-	UPROPERTY(BlueprintReadOnly, Category = "Setup")
-	UTankAimingComponent* TankAimingComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
@@ -40,7 +33,7 @@ private:
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 	// UClass* ProjectileBlueprint; More generic alternative to choose from all available classes
 
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	// UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 5000;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")

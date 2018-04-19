@@ -4,23 +4,16 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "Components/PrimitiveComponent.h"
-#include "Tank.h"
 #include "TankAimingComponent.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	ATank* ControlledTank = GetControlledTank();
-	UTankAimingComponent* AimingComponent = nullptr;
 	
-	if (ensure(ControlledTank)) {
-		AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
-	}
-
-	if (ensure(AimingComponent)) {
-		FoundAimingComponent(AimingComponent);
-	} 
+	TankAimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+	if (!ensure(TankAimingComponent)){ return; } 
+	FoundAimingComponent(TankAimingComponent);
 }
 
 // Called every frame
@@ -31,20 +24,12 @@ void ATankPlayerController::Tick(float DeltaTime)
 
 }
 
-ATank* ATankPlayerController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-
-}
-
 void ATankPlayerController::AimTowardsCrossHair()
 {
-	if (!ensure(GetControlledTank())) { return; }
 	FVector HitLocation; // Out parameter
 
 	if (GetSightRayHitLocation(HitLocation)) { // Has "side-effect", is going to line trace
-		// UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString())
-		GetControlledTank()->AimAt(HitLocation);
+		TankAimingComponent->AimAt(HitLocation);
 	}
 
 }
