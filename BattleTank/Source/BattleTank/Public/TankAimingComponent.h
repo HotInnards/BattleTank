@@ -35,7 +35,7 @@ public:
 	void Fire();
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int32 GetRoundsLeft() const;
+	int32 GetNumberOfRounds() const;
 
 	void AimAt(FVector HitLocation);
 
@@ -68,7 +68,7 @@ private:
 
 	FVector AimDirection;
 
-	int RoundsLeft = 3;
+	int NumberOfRounds = 50;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	TSubclassOf<AProjectile> ProjectileBlueprint;

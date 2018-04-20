@@ -27,7 +27,7 @@ void UTankAimingComponent::BeginPlay()
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if (RoundsLeft <= 0) 
+	if (NumberOfRounds <= 0)
 	{
 		FiringState = EFiringState::OutOfAmmo;
 	}
@@ -119,7 +119,7 @@ void UTankAimingComponent::Fire()
 			);
 
 		Projectile->LaunchProjectile(LaunchSpeed);
-		RoundsLeft--;
+		NumberOfRounds--;
 		LastFireTime = GetWorld()->GetTimeSeconds();
 	}
 }
@@ -129,7 +129,7 @@ EFiringState UTankAimingComponent::GetFiringState()
 	return FiringState;
 }
 
-int32 UTankAimingComponent::GetRoundsLeft() const
+int32 UTankAimingComponent::GetNumberOfRounds() const
 {
-	return RoundsLeft;
+	return NumberOfRounds;
 }
