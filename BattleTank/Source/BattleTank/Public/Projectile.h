@@ -34,6 +34,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float TimerDelay = 5.0f;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float Damage = 20.0f;
+
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 	
