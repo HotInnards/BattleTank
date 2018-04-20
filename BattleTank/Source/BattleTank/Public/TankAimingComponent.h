@@ -68,16 +68,17 @@ private:
 
 	FVector AimDirection;
 
-	int NumberOfRounds = 50;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 	// UClass* ProjectileBlueprint; More generic alternative to choose from all available classes
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float LaunchSpeed = 5000;
-	
+	int32 NumberOfRounds = 50;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed = 5000;
 
 };
