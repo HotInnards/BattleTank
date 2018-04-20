@@ -17,9 +17,6 @@ class BATTLETANK_API AProjectile : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 	// Sets default values for this actor's properties
 	AProjectile();
 
@@ -32,11 +29,17 @@ protected:
 
 private:
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* CollisionMesh = nullptr;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UParticleSystemComponent* LaunchBlast = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* ImpactBlast = nullptr;
 
 };
