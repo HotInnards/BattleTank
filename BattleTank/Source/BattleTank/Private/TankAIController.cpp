@@ -3,6 +3,7 @@
 
 #include "TankAIController.h"
 #include "Engine/World.h"
+#include "Tank.h" // required to implement OnDeath function call
 #include "TankAimingComponent.h"
 // Depends on the movement component via pathfinding system
 
@@ -34,4 +35,23 @@ void ATankAIController::Tick(float DeltaTime)
 	{
 		TankAimingComponent->Fire();
 	}
+}
+
+void ATankAIController::SetPawn(APawn * InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossessedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossessedTank)) { return; }
+
+		// Subscribe local method to the tank's death event
+		PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossessedTankDeath);
+	}
+}
+
+void ATankAIController::OnPossessedTankDeath()
+{
+	if (!GetPawn()) { return; }
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
